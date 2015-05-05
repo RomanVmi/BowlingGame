@@ -18,13 +18,6 @@ public class BowlingGameTest {
         game.roll(0);
     }
 
-    @Test
-    public void gutterGame() {
-        BowlingGame game = new BowlingGame();
-        rollMany(game, 20, 0);
-        assertEquals(0, game.score());
-    }
-
     private void rollMany(BowlingGame game, int rolls, int pins) {
         for (int i = 0; i < rolls; i++) {
             game.roll(pins);
@@ -32,12 +25,28 @@ public class BowlingGameTest {
     }
 
     @Test
+    public void gutterGame() {
+        BowlingGame game = new BowlingGame();
+        rollMany(game, 20, 0);
+        assertEquals(0, game.score());
+    }
+
+    @Test
     public void allOnes() {
         BowlingGame game = new BowlingGame();
         rollMany(game, 20, 1);
         assertEquals(20, game.score());
-
     }
 
+    @Test
+    public void oneSpare() {
+        BowlingGame game = new BowlingGame();
+        game.roll(5);
+        game.roll(5);
+        game.roll(3);
+        rollMany(game, 17, 0);
+
+        assertEquals(16, game.score());
+    }
 
 }
