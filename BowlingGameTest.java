@@ -28,8 +28,14 @@ public class BowlingGameTest {
 
     }
 
-    private int score() {
-        return -1;
+    @Test
+    public void allOnes() {
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 20; i++) {
+            game.roll(1);
+        }
+        assertEquals(20, game.score());
+
     }
 
 
