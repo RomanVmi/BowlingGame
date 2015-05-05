@@ -23,6 +23,10 @@ public class BowlingGameTest {
         game.roll(5);
     }
 
+    private void rollStrike(BowlingGame game) {
+        game.roll(10);
+    }
+
     private void rollMany(BowlingGame game, int rolls, int pins) {
         for (int i = 0; i < rolls; i++) {
             game.roll(pins);
@@ -65,7 +69,7 @@ public class BowlingGameTest {
     @Test
     public void oneStrike() {
         BowlingGame game = new BowlingGame();
-        game.roll(10); //strike
+        rollStrike(game);
         game.roll(3);
         game.roll(5);
         rollMany(game, 16, 0);
