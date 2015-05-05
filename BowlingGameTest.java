@@ -18,6 +18,11 @@ public class BowlingGameTest {
         game.roll(0);
     }
 
+    private void rollSpare(BowlingGame game) {
+        game.roll(5);
+        game.roll(5);
+    }
+    
     private void rollMany(BowlingGame game, int rolls, int pins) {
         for (int i = 0; i < rolls; i++) {
             game.roll(pins);
@@ -41,12 +46,20 @@ public class BowlingGameTest {
     @Test
     public void oneSpare() {
         BowlingGame game = new BowlingGame();
-        game.roll(5);
-        game.roll(5);
+        rollSpare(game);
         game.roll(3);
         rollMany(game, 17, 0);
-
         assertEquals(16, game.score());
+    }
+
+    @Test
+    public void oneFiveFiveOne() {
+        BowlingGame game = new BowlingGame();
+        game.roll(1);
+        rollSpare(game);
+        game.roll(1);
+        rollMany(game, 16, 0);
+        assertEquals(12, game.score());
     }
 
 }
