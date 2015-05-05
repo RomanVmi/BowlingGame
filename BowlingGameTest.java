@@ -72,4 +72,11 @@ public class BowlingGameTest {
         assertEquals(26, game.score());
     }
 
+    @Test
+    public void perfectGame() {
+        BowlingGame game = new BowlingGame();
+        rollMany(game, 12, 10);
+        assertEquals(300, game.score());
+    }
+
 }
