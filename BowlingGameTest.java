@@ -21,19 +21,20 @@ public class BowlingGameTest {
     @Test
     public void gutterGame() {
         BowlingGame game = new BowlingGame();
-        for (int i = 0; i < 20; i++) {
-            game.roll(0);
-        }
+        rollMany(game, 20, 0);
         assertEquals(0, game.score());
+    }
 
+    private void rollMany(BowlingGame game, int rolls, int pins) {
+        for (int i = 0; i < rolls; i++) {
+            game.roll(pins);
+        }
     }
 
     @Test
     public void allOnes() {
         BowlingGame game = new BowlingGame();
-        for (int i = 0; i < 20; i++) {
-            game.roll(1);
-        }
+        rollMany(game, 20, 1);
         assertEquals(20, game.score());
 
     }
