@@ -13,6 +13,10 @@ public class BowlingGame {
         int score = 0;
         int firstInFrame = 0;
         for (int frame = 0; frame < 10; frame++) {
+            if (isStrike(firstInFrame))  {
+                score += 10 + nextTwoBallsForStrike(firstInFrame);
+                firstInFrame++;
+            }
             if (isSpare(firstInFrame)) {
                 score += 10 + nextBallForSpare(firstInFrame);
                 firstInFrame += 2;
@@ -22,6 +26,14 @@ public class BowlingGame {
               }
         }
         return score;
+    }
+
+    private int nextTwoBallsForStrike(int firstInFrame) {
+        return rolls[firstInFrame + 1] + rolls[firstInFrame + 2];
+    }
+
+    private boolean isStrike(int firstInFrame) {
+        return rolls[firstInFrame] == 10;
     }
 
     private int scoreForFrame(int firstInFrame) {

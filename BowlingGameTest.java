@@ -22,7 +22,7 @@ public class BowlingGameTest {
         game.roll(5);
         game.roll(5);
     }
-    
+
     private void rollMany(BowlingGame game, int rolls, int pins) {
         for (int i = 0; i < rolls; i++) {
             game.roll(pins);
@@ -60,6 +60,16 @@ public class BowlingGameTest {
         game.roll(1);
         rollMany(game, 16, 0);
         assertEquals(12, game.score());
+    }
+
+    @Test
+    public void oneStrike() {
+        BowlingGame game = new BowlingGame();
+        game.roll(10); //strike
+        game.roll(3);
+        game.roll(5);
+        rollMany(game, 16, 0);
+        assertEquals(26, game.score());
     }
 
 }
